@@ -1,1 +1,4 @@
 *.opensdf
+ipch/
+*.suo
+CS482.v11.suo
