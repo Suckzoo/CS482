@@ -9,6 +9,10 @@
 
 #include <stdio.h>
 #include <tchar.h>
+#include <GL/glfw3.h>
+#include <GL/glew.h>
+#include <glm/glm.hpp>
+#include <memory>
 
 
 
