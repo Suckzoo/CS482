@@ -1,4 +1,5 @@
 *.opensdf
+*.sdf
 ipch/
 *.suo
 CS482.v11.suo
