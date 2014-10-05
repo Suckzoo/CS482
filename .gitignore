@@ -6,3 +6,6 @@ CS482.v11.suo
 CS482/Debug/
 Debug/
 CS482/CS482.vcxproj.user
+BulletCollision/
+BulletDynamics/
+LinearMath/
