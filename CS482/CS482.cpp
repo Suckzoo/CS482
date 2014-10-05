@@ -6,7 +6,8 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	Application *app = new Application();
-	app->run();
+	Application app;
+	app.Initialize();
+	app.Run();
 	return 0;
 }

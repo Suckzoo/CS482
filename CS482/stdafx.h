@@ -5,15 +5,16 @@
 
 #pragma once
 
+#define GLEW_STATIC
 #include "targetver.h"
 
 #include <stdio.h>
 #include <tchar.h>
-#include <GL/glfw3.h>
 #include <GL/glew.h>
-#include <glm/glm.hpp>
+#include <GLFW/glfw3.h>
+//#include <glm/glm.hpp>
 #include <memory>
-
+#include <list>
 
 
 // TODO: 프로그램에 필요한 추가 헤더는 여기에서 참조합니다.

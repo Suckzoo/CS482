@@ -2,6 +2,6 @@
 #define RENDERER_H
 class Renderer {
 public:
-	virtual void render() = 0;
-}
+	virtual void Render() = 0;
+};
 #endif
