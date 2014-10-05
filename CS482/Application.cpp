@@ -33,7 +33,7 @@ void Application::Initialize()
 
 	m_Renderer.push_back(m_pSimulator.get());
 	m_Renderer.push_back(m_pView.get());
-
+	
 	for(auto it = m_Renderer.begin(); it != m_Renderer.end(); it++)
 	{
 		(*it)->Register(m_pWorld, m_pWindow);
@@ -50,7 +50,6 @@ void Application::Run()
 		{
 			(*it)->Render();
 		}
-
 		m_pWindow->SwapBuffers();
 		glfwPollEvents();
 	} while(m_pWindow->GetKey(GLFW_KEY_ESCAPE) != GLFW_PRESS && !m_pWindow->ShouldClose());
