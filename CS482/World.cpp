@@ -64,3 +64,7 @@ void Room::setCamera(Camera* camera)
 {
 	this->m_pCamera = camera;
 }
+
+Room::~Room()
+{
+}

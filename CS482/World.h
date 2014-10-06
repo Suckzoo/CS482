@@ -4,6 +4,7 @@
 #include "BaseObject.h"
 #include "Renderer.h"
 #include "Camera.h"
+#include <map>
 class Room;
 class Television;
 
