@@ -89,6 +89,7 @@
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DrawableObject.h" />
+    <ClInclude Include="Program.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SimulationObject.h" />
     <ClInclude Include="stdafx.h" />
@@ -103,6 +104,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CS482.cpp" />
     <ClCompile Include="DrawableObject.cpp" />
+    <ClCompile Include="Program.cpp" />
     <ClCompile Include="Utility.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="SimulationObject.cpp" />
@@ -111,6 +113,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FrameBufferProgram.fragmentshader" />
+    <None Include="FrameBufferProgram.vertexshader" />
+    <None Include="RealWorldProgram.fragmentshader" />
+    <None Include="RealWorldProgram.vertexshader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

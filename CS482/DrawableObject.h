@@ -1,6 +1,7 @@
 #ifndef DRAWABLEOBJECT_H
 #define DRAWABLEOBJECT_H
 #include "stdafx.h"
+#include "Program.h"
 class DrawableObject
 {
 protected:

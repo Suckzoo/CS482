@@ -34,9 +34,9 @@ public:
 	virtual ~Room();
 	void AddObject(BaseObject* object);
 	void AddTelevision(Television* television);
-	void Draw();
+	void Draw(Program* p);
 	void UpdateSimulation();
-	void Render();
+	void Render(Program* p);
 	void switchChoice();
 	bool isChosen();
 	Camera* getCamera();

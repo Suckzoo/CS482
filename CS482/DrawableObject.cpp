@@ -15,3 +15,11 @@ DrawableObject::~DrawableObject()
 {
 	
 }
+
+void DrawableObject::Draw()
+{
+	/*glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, this->m_pTexture);
+	glBindVertexArray(m_pVertexArray);
+	glDrawArrays(GL_TRIANGLES, 0, m_pNumVertices);*/
+}

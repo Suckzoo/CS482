@@ -16,6 +16,10 @@
 //#include <glm/glm.hpp>
 #include <memory>
 #include <list>
+#include <map>
+#include <string>
+#include <functional>
+#include <vector>
 #include <glm/glm.hpp>
 #include "btBulletDynamicsCommon.h"
 #include "btBulletCollisionCommon.h"
