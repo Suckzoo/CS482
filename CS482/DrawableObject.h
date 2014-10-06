@@ -10,6 +10,7 @@ protected:
 	GLuint m_pNormalBuffer;
 	GLuint m_pUVBuffer;
 	GLuint m_pTexture;
+	size_t m_pNumVertices;
 
 public:
 	DrawableObject();

@@ -6,7 +6,8 @@ DrawableObject::DrawableObject() :
 	m_pVertexBuffer(0),
 	m_pNormalBuffer(0),
 	m_pUVBuffer(0),
-	m_pTexture(0)
+	m_pTexture(0),
+	m_pNumVertices(0)
 {
 
 }

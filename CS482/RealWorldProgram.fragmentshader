@@ -3,20 +3,21 @@
 in vec2 UV;
 in vec3 Normal_Cameraspace;
 in vec3 EyeDirection_Cameraspace;
+in vec3 Position_worldspace;
 
 out vec4 color;
 
-uniform sampler2D TextureSampler;
-vec3 LightPosition_worldspace = vec3(0,0,10);
+uniform sampler2D myTexture;
 
 void main() {
-	vec3 MaterialDiffuseColor = texture2D(TextureSampler, UV).rgb;
-	vec3 MaterialAmbientColor = vec3(0.1,0.1,0.1) * MaterialDiffuseColor;
-	vec3 MaterialSpecularColor = vec3(0.3,0.3,0.3);
+	vec3 LightPosition_worldspace = vec3(0,0,3);
+	vec3 MaterialDiffuseColor = texture(myTexture, UV).rgb;
+	vec3 MaterialAmbientColor = vec3(0.5,0.5,0.5) * MaterialDiffuseColor;
+	vec3 MaterialSpecularColor = vec3(0.5,0.5,0.5);
 
 	float distance = length(LightPosition_worldspace - Position_worldspace);
 
-	vec3 n = normalize(Normal_cameraspace);
+	vec3 n = normalize(Normal_Cameraspace);
 	vec3 l = normalize(LightPosition_worldspace - Position_worldspace);
 
 	float cosTheta = clamp(dot(n,l), 0, 1);
@@ -25,10 +26,10 @@ void main() {
 	vec3 R = reflect(-l, n);
 
 	float cosAlpha = clamp(dot(E,R), 0, 1);
-
 	color = vec4(
 		MaterialAmbientColor +
-		MaterialDiffuseColor * (0.5, 0.5, 0.5) * cosTheta / (distance * distance),
+		MaterialDiffuseColor * (0.5, 0.5, 0.5) * cosTheta / (distance * distance) +
 		MaterialSpecularColor * (0.5, 0.5, 0.5) * pow(cosAlpha, 5) / (distance * distance),
 		1.0);
+	//color = vec4(0.5,0.5,0.5,1);
 }

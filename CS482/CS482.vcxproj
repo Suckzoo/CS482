@@ -89,12 +89,14 @@
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DrawableObject.h" />
+    <ClInclude Include="Mesh.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SimulationObject.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Utility.h" />
+    <ClInclude Include="Floor.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
@@ -104,8 +106,10 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CS482.cpp" />
     <ClCompile Include="DrawableObject.cpp" />
+    <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="Utility.cpp" />
+    <ClCompile Include="Floor.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="SimulationObject.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -119,6 +123,9 @@
     <None Include="FrameBufferProgram.vertexshader" />
     <None Include="RealWorldProgram.fragmentshader" />
     <None Include="RealWorldProgram.vertexshader" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\res\floor.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

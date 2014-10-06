@@ -11,7 +11,6 @@ protected:
 	static const int m_dHeight = 768;
 	GLFWwindow *m_pGLFWWindow;
 	Application *m_pApplication;
-
 public:
 	Window();
 	~Window();
@@ -24,6 +23,7 @@ public:
 	Application *GetApplication(){ return m_pApplication; }
 	int GetWidth() { return m_dWidth; }
 	int GetHeight() { return m_dHeight; }
+	GLFWwindow* getWindow() { return m_pGLFWWindow;}
 
 	static void OnKeyEvent(GLFWwindow* window, int key, int scancode, int action, int mods);
 	static void OnMouseEvent(GLFWwindow* window, int button, int action, int mods);

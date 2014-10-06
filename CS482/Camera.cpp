@@ -34,14 +34,25 @@ void Camera::setDirection(glm::vec3 direction)
 void Camera::addAngleByZAxis(float angle)
 {
 	glm::vec3 v = m_pDirection;
-	v = glm::rotateZ<float, glm::precision::highp> (v, angle);
+	glm::mat4 r = glm::rotate<float, glm::precision::highp> (glm::mat4(1.0f),angle,glm::vec3(0,0,1));
+	v = glm::vec3(r * glm::vec4(v,0));
+	v = glm::normalize(v);
+	if(fabs(glm::dot<float>(v, glm::vec3(0,0,1)))>0.90) {
+		return;
+	}
 	this->m_pDirection = v;
 }
 
 void Camera::addAngleByXAxis(float angle)
 {
 	glm::vec3 v = m_pDirection;
-	v = glm::rotateX<float, glm::precision::highp> (v, angle);
+	glm::mat4 r = glm::rotate<float, glm::precision::highp> (glm::mat4(1.0f),angle,glm::vec3(1,0,0));
+	v = glm::vec3(r * glm::vec4(v,0));
+	v = glm::normalize(v);
+	printf("%lf\n",v.z);
+	if(fabs(glm::dot<float>(v, glm::vec3(0,0,1)))>0.90) {
+		return;
+	}
 	this->m_pDirection = v;
 }
 
@@ -62,6 +73,6 @@ glm::mat4 Camera::getVPMatrix()
 	glm::mat4 v = glm::lookAt(e,c,glm::vec3(0,0,1));
 	glm::mat4 p;
 	double fov = 43.0 * glm::pi<double>() / 180.0;
-	p = glm::perspective<double>(fov, 4.0/3.0, 0.4, 10);
+	p = glm::perspective<double>(fov, 4.0/3.0, 0.5, 10);
 	return p * v;
 }

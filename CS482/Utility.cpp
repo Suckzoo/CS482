@@ -104,7 +104,7 @@ GLuint LoadShaders(const char * vertex_file_path,const char * fragment_file_path
 	return ProgramID;
 }
 
-GLuint loadBMP_custom(const char * imagepath,GLuint textureID){
+GLuint loadBMP_custom(const char * imagepath, GLuint textureID){
 	// Data read from the header of the BMP file
 	unsigned char header[54]; // Each BMP file begins by a 54-bytes header
 	unsigned int dataPos;     // Position in the file where the actual data begins

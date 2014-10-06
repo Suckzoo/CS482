@@ -18,6 +18,7 @@ Room::Room() :
 void Room::AddObject(BaseObject* object)
 {
 	this->m_pObjects.push_back(object);
+	object->addToDynamicsWorld(this->m_pDynamicsWorld);
 }
 
 void Room::AddTelevision(Television* television)
@@ -28,16 +29,17 @@ void Room::AddTelevision(Television* television)
 void Room::Draw(Program* p)
 {
 	BaseObject* b;
+	p->Use();
 	for(auto it = this->m_pObjects.begin(); it != this->m_pObjects.end(); it++)
 	{
 		b = *it;
-		glm::vec3 position = glm::vec3(b->getPosition().x,b->getPosition().y,b->getPosition().z);
-		glm::quat rotation = glm::quat(b->getRotation().x,b->getRotation().y,b->getRotation().z,b->getRotation().w);
+		glm::vec3 position = glm::vec3(b->getPosition().x(),b->getPosition().y(),b->getPosition().z());
+		glm::quat rotation = glm::quat(b->getRotation().w(),b->getRotation().x(),b->getRotation().y(),b->getRotation().z());
 		glm::mat4 M = glm::translate(glm::mat4(1.0f), position) * glm::toMat4(rotation);
 		glUniformMatrix4fv((*p)("M"), 1, GL_FALSE, &M[0][0]);
 		glm::mat4 MITM = glm::transpose(glm::inverse(M));
 		glUniformMatrix4fv((*p)("MITM"), 1, GL_FALSE, &MITM[0][0]);
-		glUniform1i((*p)("TextureSampler"), 0);
+		glUniform1i((*p)("myTexture"), 0);
 		b->Draw();
 	}
 }
@@ -55,7 +57,7 @@ void Room::Render(Program* p)
 {
 	if(this->m_pChosenRoom) {
 		p->Use();
-		glUniformMatrix4fv((*p)("VP"), 1, GL_FALSE, &this->m_pCamera->getVPMatrix());
+		glUniformMatrix4fv((*p)("VP"), 1, GL_FALSE, &(this->m_pCamera->getVPMatrix())[0][0]);
 		Draw(p);
 	}
 	UpdateSimulation();
