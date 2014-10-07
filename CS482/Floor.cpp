@@ -2,12 +2,13 @@
 #include "Floor.h"
 #include "Utility.h"
 
-Floor::Floor()
+Floor::Floor(const char* texture)
 {
-	btCollisionShape* shape = new btStaticPlaneShape(btVector3(0,0,1), 0);
-	btDefaultMotionState* motionstate = new btDefaultMotionState(btTransform(btQuaternion(0,0,0,1), btVector3(0,0,-0.5)));
+	btCollisionShape* shape = new btStaticPlaneShape(btVector3(0,0,1), -1);
+	btDefaultMotionState* motionstate = new btDefaultMotionState(btTransform(btQuaternion(0,0,0,1), btVector3(0,0,-1)));
 	btRigidBody::btRigidBodyConstructionInfo info(0, motionstate, shape, btVector3(0,0,0));
 	m_pRigidBody = new btRigidBody(info);
+	m_pRigidBody->setRestitution(1.0);
 	const float vertex[18] =
 	{
 		-10,-10,-1,
@@ -87,7 +88,7 @@ Floor::Floor()
 	glBindVertexArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glGenTextures(1, &m_pTexture);
-	m_pTexture = loadBMP_custom("D:\\Projects\\CS482\\CS482\\res\\floor.bmp",m_pTexture);
+	m_pTexture = loadBMP_custom(texture,m_pTexture);
 	m_pNumVertices = 18;
 	m_pPosition = btVector3(0,0,0);
 	m_pRotation = btQuaternion(0,0,0,1);

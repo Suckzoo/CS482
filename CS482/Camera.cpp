@@ -73,6 +73,6 @@ glm::mat4 Camera::getVPMatrix()
 	glm::mat4 v = glm::lookAt(e,c,glm::vec3(0,0,1));
 	glm::mat4 p;
 	double fov = 43.0 * glm::pi<double>() / 180.0;
-	p = glm::perspective<double>(fov, 4.0/3.0, 0.5, 10);
+	p = glm::perspective<double>(fov, 4.0/3.0, 0.5, 100);
 	return p * v;
 }

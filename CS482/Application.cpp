@@ -3,6 +3,7 @@
 #include "Program.h"
 #include "Floor.h"
 #include "Utility.h"
+#include "Mesh.h"
 
 #include <GL/glfw3.h>
 #include <glm/matrix.hpp>
@@ -23,6 +24,8 @@ Application::~Application()
 
 void Application::Initialize()
 {
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LESS);
 	m_pWindow.reset(new Window);
 	m_pWorld.clear();
 	Room* room = new Room();
@@ -32,7 +35,7 @@ void Application::Initialize()
 	chosenRoom = room;
 	chosenRoom->switchChoice();
 	chosenRoom->setCamera(camera);
-	room->AddObject(new Floor);
+	room->AddObject(new Floor("D:\\Projects\\CS482\\CS482\\res\\floor.bmp"));
 	m_pWorld.push_back(room);
 	Program* realProgram = new Program("RealWorldProgram.vertexshader","RealWorldProgram.fragmentshader");
 	m_pPrograms["Real"] = realProgram;
@@ -41,6 +44,9 @@ void Application::Initialize()
 	names.push_back("M");
 	names.push_back("MITM");
 	names.push_back("myTexture");
+	Mesh* m = new Mesh("D:\\Projects\\CS482\\CS482\\res\\cube.obj");
+	m->setPosition(btVector3(0,0,3));
+	chosenRoom->AddObject(m);
 	realProgram->Use();
 	realProgram->FindUniform(names);
 	names.clear();
@@ -54,7 +60,7 @@ void Application::Run()
 	do
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
-		glClearColor(0.0f,0.0f,0.4f,1.0f);
+		glClearColor(0.0f,0.4f,0.7f,1.0f);
 		glfwSetCursorPos(m_pWindow->getWindow(),1024/2,768/2);
 		for(auto it = m_pWorld.begin(); it != m_pWorld.end(); it++)
 		{

@@ -7,7 +7,7 @@ class Floor :
 	public BaseObject
 {
 public:
-	Floor();
+	Floor(const char *texture);
 	void Draw();
 };
 #endif

@@ -13,6 +13,7 @@ Room::Room() :
 	btCollisionDispatcher* dispatcher = new btCollisionDispatcher(collisionConfiguration);
 	btSequentialImpulseConstraintSolver* solver = new btSequentialImpulseConstraintSolver();
 	m_pDynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, broadphase, solver, collisionConfiguration);
+	m_pDynamicsWorld->setGravity(btVector3(0,0,-0.5));
 }
 
 void Room::AddObject(BaseObject* object)

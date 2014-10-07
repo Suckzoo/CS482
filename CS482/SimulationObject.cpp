@@ -52,4 +52,5 @@ void SimulationObject::updateSimulation()
 	this->m_pRigidBody->getMotionState()->getWorldTransform(trans);
 	this->m_pPosition = trans.getOrigin();
 	this->m_pRotation = trans.getRotation();
+	this->m_pRigidBody->activate();
 }
